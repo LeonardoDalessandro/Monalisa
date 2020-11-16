@@ -1,0 +1,14 @@
+/*
+  OBJECTS => Grids
+*/
+
+.o-full-width{
+  width:100%;
+}
+
+.o-width--1200{
+  $m-h: auto;
+  margin-left: $m-h;
+  margin-right: $m-h;
+  @include responsive-prop('width', 1200px, null, null, null, null);
+}

@@ -1,0 +1,31 @@
+// * ========================================================================
+//   # TOOLS aspect -> Crossbrowser - Rotation
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include rotation($deg);
+** $deg => must be: deg
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include rotation(25deg);
+** }
+**
+*/
+
+@mixin rotation($deg){
+  // Debug => verify input
+  $errorMessage: "Rotation => Unit property $deg must be 'deg': 10deg, -10deg, ... (your value: #{$deg})";
+  @if unit($deg) != 'deg' { @error $errorMessage; }
+  
+  // Return
+  transform: rotate($deg);
+  -ms-transform: rotate($deg);
+  -moz-transform: rotate($deg);
+  -webkit-transform: rotate($deg);
+  -o-transform: rotate($deg);
+}

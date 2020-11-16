@@ -1,0 +1,25 @@
+/* ==========================================================================
+   # Form elements
+   ========================================================================== */
+
+
+label, input, textarea, select{display:block;font-style: italic;}
+
+label{font-weight: bold;}
+
+select, option{cursor:pointer !important;}
+
+input, textarea, select{
+  $font-color: #444;
+  border: 0;
+  color: $font-color;
+
+  &:focus{
+    outline: none;
+    @include shadow(0px, 0px, 20px, 0px, rgba(0,0,0,0.3))
+  }
+
+  @include input-placeholder {
+    color: $font-color;
+  }
+}

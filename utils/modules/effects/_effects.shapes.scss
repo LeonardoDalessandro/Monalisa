@@ -1,0 +1,19 @@
+// * ========================================================================
+//   # UTILS -> Effects - Shapes
+//   ======================================================================== */
+
+// Shapping rounded elements (inputs, btn)
+%shape-rounded, .u-rounded{
+  $mv1: 10px; $mv2: 10px; $mv3: 10px; $mv4: 10px; $mv5: 10px;
+  $mh1: 20px; $mh2: 20px; $mh3: 20px; $mh4: 20px; $mh5: 20px;
+  $f1: 20px; $f2: 20px; $f3: 20px; $f4: 20px; $f5: 20px;    
+  @include responsive-prop('padding-top', $mv1, $mv2, $mv3, $mv4, $mv5);
+  @include responsive-prop('padding-right', $mh1, $mh2, $mh3, $mh4, $mh5);
+  @include responsive-prop('padding-bottom', $mv1, $mv2, $mv3, $mv4, $mv5);
+  @include responsive-prop('padding-left', $mh1, $mh2, $mh3, $mh4, $mh5);
+  @include responsive-prop('font-size', $f1, $f2, $f3, $f4, $f5);
+  @include responsive-prop('border-radius', $f1, $f2, $f3, $f4, $f5);
+}
+
+// Circle shape
+%shape-circle, .u-circle{ @include border-radius(50%); }

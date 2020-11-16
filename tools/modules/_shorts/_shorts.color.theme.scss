@@ -1,0 +1,36 @@
+// * ========================================================================
+//   # TOOLS shorts -> Font and BG color
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include theme($font, $bg);
+** $font & $bg => must be: #000 or rgba(0,0,0,0.0)
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include theme(#f0f, #00f);
+** }
+**
+**
+** === EXAMPLE RESULT ===
+**
+** .class{
+**   color: #f0f;
+**   background-color: #00f
+** }
+*/
+
+@mixin theme($font, $bg) {
+  // Debug => verify input
+  $errorMessage: "@extend SCSS => must be a color (your value: #{$font}, #{$bg})";
+  @if type-of($font) != 'color' { @error $errorMessage; }
+  @if type-of($bg) != 'color' { @error $errorMessage; }
+
+  // Result
+  color: $font;
+  background-color: $bg;
+}

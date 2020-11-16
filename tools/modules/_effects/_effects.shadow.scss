@@ -1,0 +1,71 @@
+// * ========================================================================
+//   # TOOLS effect -> Crossbrowser - Shadow
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include shadow($horizontal-offset, $vertical-offset, $blur-radius, $spread-radius, $color);
+** $horizontal-offset => should be: px
+** $vertical-offset => should be: px
+** $blur-radius => should be: px
+** $spread-radius => should be: px
+** $color => must be: #000 or rgba(0,0,0,0.0)
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include shadow(10px, 10px, 10px, 10px, rgba(0,0,0,0.7));
+** }
+**
+*/
+
+@mixin shadow($v1, $v2, $v3, $v4, $v5){
+  // Debug => verify input
+  $errorMessageSize: "Shadow box => Unit property must be 'px': 10px, 20px, ... (your value: #{$v1}, #{$v2}, #{$v3}, #{$v4})";
+  $errorMessageColor: "Shadow box => Color property must be a color value (your value: #{$v5})";
+  @if unit($v1) != 'px' { @error $errorMessageSize; }
+  @if unit($v2) != 'px' { @error $errorMessageSize; }
+  @if unit($v3) != 'px' { @error $errorMessageSize; }
+  @if unit($v4) != 'px' { @error $errorMessageSize; }
+  @if type-of($v5) != 'color' { @error $errorMessageColor; }
+
+  // Return
+  -moz-box-shadow: $v1 $v2 $v3 $v4 $v5;
+  -webkit-box-shadow: $v1 $v2 $v3 $v4 $v5;
+  box-shadow: $v1 $v2 $v3 $v4 $v5;
+}
+
+
+
+/*
+** === USAGE ===
+**
+** @include text-shadow($horizontal-offset, $vertical-offset, $blur-radius, $color);
+** $horizontal-offset => should be: px
+** $vertical-offset => should be: px
+** $blur-radius => should be: px
+** $color => must be: #000 or rgba(0,0,0,0.0)
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include text-shadow(10px, 10px, 10px, rgba(0,0,0,0.7));
+** }
+**
+*/
+
+@mixin text-shadow($v1, $v2, $v3, $v4){
+  // Debug => verify input
+  $errorMessageSize: "Shadow text => Unit property must be 'px': 10px, 20px, ... (your value: #{$v1}, #{$v2}, #{$v3})";
+  $errorMessageColor: "Shadow text => Color property must be a color value (your value: #{$v4})";
+  @if unit($v1) != 'px' { @error $errorMessageSize; }
+  @if unit($v2) != 'px' { @error $errorMessageSize; }
+  @if unit($v3) != 'px' { @error $errorMessageSize; }
+  @if type-of($v4) != 'color' { @error $errorMessageColor; }
+
+  // Return
+  text-shadow: $v1 $v2 $v3 $v4;
+}

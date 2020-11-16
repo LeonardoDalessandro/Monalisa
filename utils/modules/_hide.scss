@@ -1,0 +1,78 @@
+// * ========================================================================
+//   # UTILS -> HELPERS
+//   ======================================================================== */
+
+// lg = large
+// md-lg = medium - large
+// md = medium - 
+// md-sm = medium - small
+// sm = small
+
+
+
+// hide to all screen
+%hide, .u-hide{ display: none; }
+
+
+
+// hide to only 1 breakpoint
+%hide-to-lg, .u-hide-to--lg{ @include bp-lg{display: none;} }
+%hide-to-md-lg, .u-hide-to--md-lg{ @include bp-md-lg{display: none;} }
+%hide-to-md, .u-hide-to--md{ @include bp-md{display: none;} }
+%hide-to-md-sm, .u-hide-to--md-sm{ @include bp-md-sm{display: none;} }
+%hide-to-sm, .u-hide-to--sm{ @include bp-sm{display: none;} }
+
+
+
+// hide to more than 1 breakpoint
+%hide-to-smartphone, .u-hide-to--smartphone{
+  @extend %hide-to-sm;
+  @extend %hide-to-md-sm;
+}
+
+
+
+// show to only 1 breakpoint and hide to others
+%show-to-lg, .u-show-to--lg{
+  @extend %hide-to-md-lg;
+  @extend %hide-to-md;
+  @extend %hide-to-md-sm;
+  @extend %hide-to-sm;
+}
+
+%show-to-md-lg, .u-show-to--md-lg{
+  @extend %hide-to-lg;
+  @extend %hide-to-md;
+  @extend %hide-to-md-sm;
+  @extend %hide-to-sm;
+}
+
+%show-to-md, .u-show-to--md{
+  @extend %hide-to-lg;
+  @extend %hide-to-md-lg;
+  @extend %hide-to-md-sm;
+  @extend %hide-to-sm;
+}
+
+%show-to-md-sm, .u-show-to--md-sm{
+  @extend %hide-to-lg;
+  @extend %hide-to-md-lg;
+  @extend %hide-to-md;
+  @extend %hide-to-sm;
+}
+
+%show-to-sm, .u-show-to--sm{
+  @extend %hide-to-lg;
+  @extend %hide-to-md-lg;
+  @extend %hide-to-md;
+  @extend %hide-to-md-sm;
+}
+
+
+
+// show only to small device and hide to others
+%show-to-smartphone, .u-show-to--smartphone{
+  @extend %hide-to-lg;
+  @extend %hide-to-md-lg;
+  @extend %hide-to-md;
+}

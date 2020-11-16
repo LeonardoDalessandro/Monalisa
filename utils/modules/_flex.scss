@@ -1,0 +1,78 @@
+// * ========================================================================
+//   # UTILS -> Flex properties
+//   ======================================================================== */
+
+/*
+** === PLACEHOLDER FOR SCSS ONLY ===
+*/
+
+%flex-generic{
+  @include flex;
+  @include flex-wrap(wrap);
+  @include flex-direction(row);
+}
+
+%flex-children-left{ @include justify-content(flex-start); }
+%flex-children-center{ @include justify-content(center); }
+%flex-children-center--distributed{ @include justify-content(space-between); }
+%flex-children-right{ @include justify-content(flex-end); }
+%flex-children-middle{ @include align-items(center); }
+%flex-children-middle--group{ @include align-content(center); }
+
+
+
+
+
+/*
+** === HTML CLASSES ===
+*/
+
+// row => top
+%flex-top-left, .u-row--left{
+  @include extend-array('flex-', 'generic');
+}
+%flex-top-center, .u-row--center{
+  @include extend-array('flex-', 'generic', 'children-center');
+}
+%flex-top-center-distributed, .u-row--center-distributed{
+  @include extend-array('flex-', 'generic', 'children-center--distributed');
+}
+%flex-top-right, .u-row--right{
+  @include extend-array('flex-', 'generic', 'children-right');
+}
+
+
+
+
+
+// row => middle
+%flex-middle-left, .u-row--middle-left{
+  @include extend-array('flex-', 'generic', 'children-middle');
+}
+%flex-middle-center, .u-row--middle-center{
+  @include extend-array('flex-', 'generic', 'children-center', 'children-middle');
+}
+%flex-middle-center-distributed, .u-row--middle-center-distributed{
+  @include extend-array('flex-', 'generic', 'children-center--distributed', 'children-middle');
+}
+%flex-middle-right, .u-row--middle-right{
+  @include extend-array('flex-', 'generic', 'children-right', 'children-middle');
+}
+
+
+
+
+
+// row => middle group
+%flex-middle-group-left, .u-row--middle-left-group{
+  @include extend-array('flex-', 'generic', 'children-middle--group');
+}
+%flex-middle-group-center, .u-row--middle-center-group{
+  @include extend-array('flex-', 'generic', 'children-center', 'children-middle--group');
+}
+%flex-middle-group-center-distributed, .u-row--middle-center-distributed-group{
+  @include extend-array('flex-', 'generic', 'children-center--distributed', 'children-middle--group');
+}
+%flex-middle-group-right, .u-row--middle-right-group{
+  @include extend-array('flex-', 'generic', 'children-right', 'children-middle--group');
+}

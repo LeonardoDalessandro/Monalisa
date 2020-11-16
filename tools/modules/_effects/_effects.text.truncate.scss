@@ -1,0 +1,25 @@
+// * ========================================================================
+//   # TOOLS effect -> Truncate
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include truncate($truncation-boundary);
+** $truncation-boundary => could be any allow value
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include truncate(100px);
+** }
+**
+*/
+
+@mixin truncate($truncation-boundary) {
+    max-width: $truncation-boundary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

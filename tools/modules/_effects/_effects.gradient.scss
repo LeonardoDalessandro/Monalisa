@@ -1,0 +1,58 @@
+// * ========================================================================
+//   # TOOLS effect -> Crossbrowser - Gradient
+//   ======================================================================== */
+
+
+/*
+** === USAGE ===
+**
+** @include background-gradient($start-color, $end-color, $orientation);
+** $start-color => must be: #000 or rgba(0,0,0,0.0)
+** $end-color => must be: #000 or rgba(0,0,0,0.0)
+** $orientation => 'vertical', 'horizontal', ''
+** if $orientation == '', gradient will be circular
+**
+**
+** === EXAMPLE USE ===
+**
+** .class1{
+**   @include background-gradient(#f00, #0f0, 'vertical');
+** }
+**
+** .class2{
+**   @include background-gradient(#f00, #0f0, 'horizontal');
+** }
+**
+** .class3{
+**   @include background-gradient(#f00, #0f0, '');
+** }
+**
+*/
+
+@mixin background-gradient($start-color, $end-color, $orientation) {
+  // Debug => verify input
+  $errorMessageOrientation: "Background gradient => should be: 'vertical' or 'horizontal' or null (your value: #{$orientation})";
+  $errorMessageColor: "Background gradient => $start-color, $end-color must be a color value (your value: #{$start-color}, #{$end-color}, [v]))";
+  @if $orientation != 'vertical' and 
+      $orientation != 'horizontal' and
+      $orientation != null {
+        @error $errorMessageOrientation;
+  }
+  @if type-of($start-color) != 'color' { @error $errorMessageOrientation; }
+  
+  // Return
+  background: $start-color;
+
+  @if $orientation == 'vertical' {
+    background: -webkit-linear-gradient(top, $start-color, $end-color);
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  } 
+  @if $orientation == 'horizontal' {
+    background: -webkit-linear-gradient(left, $start-color, $end-color);
+    background: linear-gradient(to right, $start-color, $end-color);
+  }
+  @if $orientation == null {
+    background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+    background: radial-gradient(ellipse at center, $start-color, $end-color);
+  }
+}

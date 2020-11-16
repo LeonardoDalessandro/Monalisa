@@ -1,0 +1,38 @@
+// * ========================================================================
+//   # TOOLS shorts -> SCSS @extend directive
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include extend-array($prefix, $child...);
+** $prefix & $child => must be string
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include extend-array('c-btn-', 'big', 'red');
+** }
+**
+**
+** === EXAMPLE RESULT ===
+**
+** .class{
+**   @extend %c-btn-big;
+**   @extend %c-btn-red;
+** }
+*/
+
+@mixin extend-array($prefix, $child...) {
+    @each $i in $child {
+        // Debug => verify input
+        $errorMessage: "@extend SCSS => must be a string (your value: #{$prefix}, #{$i})";
+        @if type-of($prefix) != 'string' { @error $errorMessage; }
+        @if type-of($i) != 'string' { @error $errorMessage; }
+
+        // Result
+        $name: #{$prefix}#{$i};
+        @extend %#{$name};
+    }
+}

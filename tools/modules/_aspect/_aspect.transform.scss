@@ -1,0 +1,60 @@
+// * ========================================================================
+//   # TOOLS aspect -> Crossbrowser - Transform element
+//   ======================================================================== */
+
+
+/*
+** === USAGE ===
+**
+** @include transform($x, $y);
+** $x & $y => allow all units:  px, em, vw, %
+** $x & $y => accept null value
+**
+**
+** === EXAMPLE USE ===
+**
+** .class1{
+**   @include transform(25px, null); // It transform only X
+** }
+**
+** .class2{
+**   @include transform(null, 25px); // It transform only Y
+** }
+**
+** .class3{
+**   @include transform(25px, 25px); // It transform X and Y
+** }
+**
+*/
+
+
+@mixin transform($x, $y){
+
+  // Return
+  @if $y == null {
+
+    transform: skewX($x);
+    -webkit-transform: skewX($x);
+    -moz-transform: skewX($x);
+    -o-transform: skewX($x);
+    -ms-transform: skewX($x);
+
+  } @else if $x == null {
+
+    transform: skewY($y);
+    -webkit-transform: skewY($y);
+    -moz-transform: skewY($y);
+    -o-transform: skewY($y);
+    -ms-transform: skewY($y);
+
+  } @else {
+
+    transform: scale($x, $y);
+    -webkit-transform: scale($x, $y);
+    -moz-transform: scale($x, $y);
+    -o-transform: scale($x, $y);
+    -ms-transform: scale($x, $y);
+
+  }
+  
+}

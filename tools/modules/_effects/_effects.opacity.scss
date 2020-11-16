@@ -1,0 +1,29 @@
+// * ========================================================================
+//   # TOOLS effect -> Crossbrowser - Opacity
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include opacity($opacity);
+** $opacity => must be a number: 0.1, 0.9, 1.0
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include opacity(0.8);
+** }
+**
+*/
+
+@mixin opacity($opacity){
+  // Debug => verify input
+  $errorMessage: "Opacity => Property OPACITY must be a number: 1, 0.1, 0.9, ... (your value: #{$opacity})";
+  @if type-of($opacity) != 'number' { @error $errorMessage; }
+
+  // Return
+  -moz-opacity: #{$opacity};
+  -khtml-opacity: #{$opacity};
+  opacity: #{$opacity};
+}

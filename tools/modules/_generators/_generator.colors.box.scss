@@ -1,0 +1,70 @@
+// * ========================================================================
+//   # TOOLS -> Generator - COLORS
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include color-font-generator($val);
+** $val => must be a color hex
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include color-font-generator(#f00);
+** }
+**
+**
+**
+**
+*/
+
+%generator-hover{
+  text-decoration: none;
+  &:hover{ opacity: 0.8}
+}
+
+@mixin color-box-fill-generator($c1, $c2, $hover){
+  // Debug => verify input
+  $errorMessageColor: "$colorType must be a color value (your values: #{$c1}, #{$c2})";
+  @if type-of($c1) != 'color' { @error $errorMessageColor; }
+  @if type-of($c2) != 'color' { @error $errorMessageColor; }
+  
+  // Return
+  background-color: $c1 !important; color: $c2 !important;
+  border-color: $c1 !important;
+
+  @if $hover == 'true' { @extend %generator-hover; }
+}
+
+@mixin color-box-stroke-generator($c1, $hover){
+	// Debug => verify input
+  $errorMessageColor: "$colorType must be a color value (your values: #{$c1})";
+  @if type-of($c1) != 'color' { @error $errorMessageColor; }
+  
+  // Return
+  color: $c1 !important;
+  border-color: $c1 !important;
+
+  @if $hover == 'true' { @extend %generator-hover; }
+}
+
+
+
+/* GRADIENTS */
+@mixin gradientgenerator-2colors($color1, $color2){
+  background: $color1; /* Old browsers */
+  background: -moz-linear-gradient(left, $color1 0%, $color2 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,$color1 0%,$color2 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, $color1 0%,$color2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr= $color1, endColorstr= $color2,GradientType=0 ); /* IE6-9 */
+}
+
+@mixin gradientgenerator-3colors($color1, $color2, $color3){
+  background: $color1; /* Old browsers */
+  background: -moz-linear-gradient(left, $color1 0%, $color2 50%, $color3 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,$color1 0%, $color2 50%, $color3 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, $color1 0%, $color2 50%, $color3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr= $color1, endColorstr= $color3,GradientType=0 ); /* IE6-9 */
+}

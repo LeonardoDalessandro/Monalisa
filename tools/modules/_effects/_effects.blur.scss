@@ -1,0 +1,33 @@
+// * ========================================================================
+//   # TOOLS effect -> Crossbrowser - Blur
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include blur($val);
+** $val => should be:  px
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include blur(25px);
+** }
+**
+*/
+
+
+
+@mixin blur($val){
+	// Debug => verify input
+  $errorMessage: "Blur filter => Unit property must be 'px': 10px, 20px, ... (your value: #{$val})";
+  @if unit($val) != 'px' { @warn $errorMessage; }
+  
+  // Return
+  filter: blur($val);
+	-webkit-filter: blur($val);
+	-moz-filter: blur($val); 
+	-o-filter: blur($val); 
+	-ms-filter: blur($val); 
+}

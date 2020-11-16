@@ -1,0 +1,135 @@
+// * ========================================================================
+//   # TOOLS effect -> Crossbrowser - Filters
+//   ======================================================================== */
+
+
+/*
+** === USAGE ===
+**
+** @include sepia($val);
+** $val => should be:  %
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include sepia(25%);
+** }
+**
+*/
+
+@mixin sepia($val){
+	// Debug => verify input
+  $errorMessage: "Sepia filter => Unit property must be '%': 10%, 20%, ... (your value: #{$val})";
+  @if type-of($val) != 'number' { @warn $errorMessage; }
+  
+  // Return
+  filter: sepia($val);
+	-webkit-filter: sepia($val);
+	-moz-filter: sepia($val); 
+	-o-filter: sepia($val); 
+	-ms-filter: sepia($val); 
+}
+
+/*
+** === USAGE ===
+**
+** @include contrast($val);
+** $val => should be:  %
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include contrast(25%);
+** }
+**
+*/
+
+
+@mixin contrast($val){
+	// Debug => verify input
+  $errorMessage: "Contrast filter =>Unit property must be '%': 10%, 20%, ... (your value: #{$val})";
+  @if type-of($val) != 'number' { @warn $errorMessage; }
+  
+  // Return
+  filter: contrast($val);
+	-webkit-filter: contrast($val);
+	-moz-filter: contrast($val); 
+	-o-filter: contrast($val); 
+	-ms-filter: contrast($val); 
+}
+
+/*
+** === USAGE ===
+**
+** @include brightness($val);
+** $val => should be:  %
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include brightness(25%);
+** }
+**
+*/
+
+
+@mixin brightness($val){
+	// Debug => verify input
+  $errorMessage: "Brightness filter => Unit property must be '%': 10%, 20%, ... (your value: #{$val})";
+  @if type-of($val) != 'number' { @warn $errorMessage; }
+  
+  // Return
+  filter: brightness($val);
+	-webkit-filter: brightness($val);
+	-moz-filter: brightness($val); 
+	-o-filter: brightness($val); 
+	-ms-filter: brightness($val); 
+}
+
+/*
+** === USAGE ===
+**
+** @include multi-filter($v1, $v2, $v3, $v4);
+** $v1 => blur, 
+** $v2 => sepia, 
+** $v3 => contrast, 
+** $v4 => brightness
+**
+** $v1 => should be:  px
+** $v2, $v3, $v4 => shuld be:  %
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include multi-filter(10px, 100%, 0, null);
+** }
+**
+*/
+
+@mixin multi-filter($v1, $v2, $v3, $v4){
+	// Debug => verify input
+  $errorMessageBlur: "Multi filter => Unit property must be 'px': 10px, 20px, ... (your value: #{$v1}, [v], [v], [v])";
+	$errorMessageSeppia: "Multi filter => Unit property must be '%': 10%, 20%, ... (your value: [v], #{$v2}, [v], [v])";
+	$errorMessageContrast: "Multi filter => Unit property must be '%': 10%, 20%, ... (your value: [v], [v], #{$v3}, [v])";
+	$errorMessageBrightness: "Multi filter => Unit property must be '%': 10%, 20%, ... (your value: [v], [v], [v], #{$v4})";
+	$errorMessageNull: "Multi filter => Null value is not accepted. Please, type 0 instead (your values: #{$v1}, #{$v2}, #{$v3}, #{$v4},)";
+  @if unit($v1) != 'px' { @warn $errorMessage; }
+	@if type-of($v2) != 'number' { @warn $errorMessageSeppia; }
+	@if type-of($v3) != 'number' { @warn $errorMessageContrast; }
+	@if type-of($v4) != 'number' { @warn $errorMessageContrast; }
+	@if $v1 == null { @warn $errorMessageNull; }
+	@if $v2 == null { @warn $errorMessageNull; }
+	@if $v3 == null { @warn $errorMessageNull; }
+	@if $v4 == null { @warn $errorMessageNull; }
+  
+  // Return
+  filter: blur($v1) sepia($v2) contrast($v3) brightness($v4);
+  -webkit-filter: blur($v1) sepia($v2) contrast($v3) brightness($v4);
+  -moz-filter: blur($v1) sepia($v2) contrast($v3) brightness($v4); 
+  -o-filter: blur($v1) sepia($v2) contrast($v3) brightness($v4); 
+  -ms-filter: blur($v1) sepia($v2) contrast($v3) brightness($v4);
+}

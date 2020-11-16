@@ -1,0 +1,136 @@
+// * ========================================================================
+//   # TOOLS shorts -> Responsive property
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include responsive-prop($prop-name, $v1, $v2, $v3, $v4, $v5);
+** $prop-name => must be a string and a real css property
+** $v1, $v2, $v3, $v4, $v5 => must be a px value
+** $v1, $v2, $v3, $v4, $v5 => !! when are px values its become vw values !!
+** $v1, $v2, $v3, $v4, $v5 => could be: null
+** $v1, $v2, $v3, $v4, $v5 => could be: 'auto'
+** $v1, $v2, $v3, $v4, $v5 => could be: 'fluid'
+** $v1, $v2, $v3, $v4, $v5 => when = 'fluid' it means 100%
+** $v1, $v2, $v3, $v4, $v5 => 'fluid' and 'auto' must be a string value
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include responsive-prop('margin-top', 50px, 40px, null, 'auto', 'fluid');
+** }
+**
+**
+** === IT MEANS ===
+**
+** margin-top for lg (large device) breakpoint = 50px
+** margin-top for md-lg (medium large device) breakpoint = 40px
+** md (medium device) don't have margin-top property 
+** margin-top for md-sm (medium small device) breakpoint = auto
+** margin-top for sm (small device) breakpoint = 100%
+**
+**
+** === WHEN COMBINED ===
+**
+** styles/custom_settings/_resolutions.scss => you could define which value will be fluid
+**
+*/
+
+@mixin responsive-prop($prop-name, $v1, $v2, $v3, $v4, $v5) {
+  // Debug => verify input
+  $errorMessageSize: "Responsive property => should be null, 'auto', 'fluid' or px value (your value: #{$v1}, #{$v2}, #{$v3}, #{$v4}, #{$v5})";
+  $errorMessagePropName: "Responsive property => must be string type and a real CSS property (your value: #{$prop-name})";
+
+  @if type-of($prop-name) != 'string' { @error $errorMessagePropName; }
+
+  @if $v1 {
+    @if $v1 != 'auto' and $v1 != 'fluid' {  
+      @if unit($v1) != 'px'{
+        @error $errorMessageSize;
+      }
+    }
+  }
+  @if $v2 {
+    @if $v2 != 'auto' and $v2 != 'fluid'{  
+      @if unit($v2) != 'px'{
+        @error $errorMessageSize;
+      }
+    }
+  }
+  @if $v3 {
+    @if $v3 != 'auto' and $v3 != 'fluid' {  
+      @if unit($v3) != 'px'{
+        @error $errorMessageSize;
+      }
+    }
+  }
+  @if $v4 {
+    @if $v4 != 'auto' and $v4 != 'fluid' {  
+      @if unit($v4) != 'px' {
+        @error $errorMessageSize;
+      }
+    }
+  }
+  @if $v5 {
+    @if $v5 != 'auto' and $v5 != 'fluid' {  
+      @if unit($v5) != 'px'{
+        @error $errorMessageSize;
+      }
+    }
+  }
+  
+
+  // Result
+  @if $v1 {
+    @include bp-lg{
+      @if $v1 == 'auto' { #{$prop-name}: auto; }
+      @else if $v1 == 'fluid' { #{$prop-name}: 100%; }
+      @else{
+        @if $lg-fluid == 'true' { #{$prop-name}: get-vw-lg($v1); }
+        @if $lg-fluid == 'false' { #{$prop-name}: $v1; }
+      }            
+    }
+  }  
+  @if $v2 {
+    @include bp-md-lg{
+      @if $v2 == 'auto' { #{$prop-name}: auto; }
+      @else if $v2 == 'fluid' { #{$prop-name}: 100%; }
+      @else {
+        @if $md-lg-fluid == 'true' { #{$prop-name}: get-vw-md-lg($v2); }
+        @if $md-lg-fluid == 'false' { #{$prop-name}: $v2; }
+      }      
+    }
+  }
+  @if $v3 {
+    @include bp-md{
+      @if $v3 == 'auto' { #{$prop-name}: auto; }
+      @else if $v3 == 'fluid' { #{$prop-name}: 100%; }
+      @else{
+        @if $md-fluid == 'true' { #{$prop-name}: get-vw-md($v3); }
+        @if $md-fluid == 'false' { #{$prop-name}: $v3; } 
+      }      
+    }
+  }
+  @if $v4 {
+    @include bp-md-sm{
+      @if $v4 == 'auto' { #{$prop-name}: auto; }
+      @else if $v4 == 'fluid' { #{$prop-name}: 100%; }
+      @else{
+        @if $md-sm-fluid == 'true' { #{$prop-name}: get-vw-md-sm($v4); }
+        @if $md-sm-fluid == 'false' { #{$prop-name}: $v4; } 
+      }      
+    }
+  }
+  @if $v5 {
+    @include bp-sm{
+      @if $v5 == 'auto' { #{$prop-name}: auto; }
+      @else if $v5 == 'fluid' { #{$prop-name}: 100%; }
+      @else{
+        @if $sm-fluid == 'true' { #{$prop-name}: get-vw-sm($v5); }
+        @if $sm-fluid == 'false' { #{$prop-name}: $v5; } 
+      }      
+    }
+  }
+}

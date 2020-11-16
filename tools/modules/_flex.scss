@@ -1,0 +1,123 @@
+// * ========================================================================
+//   # TOOLS -> Flex properties
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include flex;
+** justify-content($justify-content)
+**
+*/
+
+// use crossbrowser flex
+// Values for $display are: flex (default), inline-flex
+@mixin flex() {
+  //-js-display: flex; // for IE compatibility
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// Values: row | row-reverse | column | column-reverse
+@mixin flex-direction($direction) {
+  // Debug => verify input
+  $errorMessage: "Flex direction => Allow values: row | row-reverse | column | column-reverse (your value: #{direction})";
+  @if $direction != row and
+      $direction != row-reverse and
+      $direction != column and
+      $direction != column-reverse {
+    @error $errorMessage;
+  }
+
+  // Result
+  -webkit-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+// Values: nowrap | wrap | wrap-reverse
+@mixin flex-wrap($wrap) {
+  // Debug => verify input
+  $errorMessage: "Flex wrap => Allow values: nowrap | wrap | wrap-reverse (your value: #{$wrap})";
+  @if $wrap != nowrap and
+      $wrap != wrap and
+      $wrap != wrap-reverse {
+    @error $errorMessage;
+  }
+
+  // Result
+  -webkit-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+// Legal values: flex-start | flex-end | center | space-between | space-around
+@mixin justify-content($justify-content) {
+  // Debug => verify input
+  $errorMessage: "Flex justify-content => Allow values: flex-start | flex-end | center | space-between | space-around (your value: #{justify-content})";
+  @if $justify-content != flex-start and
+      $justify-content != flex-end and
+      $justify-content != center and
+      $justify-content != space-between and
+      $justify-content != space-around {
+    @error $errorMessage;
+  }
+
+  // Result
+  -webkit-justify-content: $justify-content;
+  justify-content: $justify-content;
+}
+
+// Legal values: flex-start | flex-end | center | baseline | stretch
+@mixin align-items($align-items) {
+  // Debug => verify input
+  $errorMessage: "Flex align-items => Allow values: flex-start | flex-end | center | baseline | stretch (your value: #{align-items})";
+  @if $align-items != flex-start and
+      $align-items != flex-end and
+      $align-items != center and
+      $align-items != baseline and
+      $align-items != stretch {
+    @error $errorMessage;
+  }
+
+  // Result
+  -webkit-align-items: $align-items;
+  align-items: $align-items;
+}
+
+// Legal values: auto | flex-start | flex-end | center | baseline | stretch
+@mixin align-self($align-self) {
+  // Debug => verify input
+  $errorMessage: "Flex align-self => Allow values: auto | flex-start | flex-end | center | baseline | stretch (your value: #{align-self})";
+  @if $align-self != auto and
+      $align-self != flex-start and
+      $align-self != flex-end and
+      $align-self != center and
+      $align-self != baseline and
+      $align-self != stretch {
+    @error $errorMessage;
+  }
+
+  // Result
+  -webkit-align-self: $align-self;
+  align-self: $align-self;
+}
+
+// Legal values: flex-start | flex-end | center | space-between | space-around | stretch
+@mixin align-content($align-content) {
+  // Debug => verify input
+  $errorMessage: "Flex align-content => Allow values: flex-start | flex-end | center | space-between | space-around | stretch (your value: #{$align-content})";
+  @if $align-content != flex-start and
+      $align-content != flex-end and
+      $align-content != center and
+      $align-content != space-between and
+      $align-content != space-around and 
+      $align-content != stretch {
+    @error $errorMessage;
+  }
+
+  // Result
+  -webkit-align-content: $align-content;
+  align-content: $align-content;
+}

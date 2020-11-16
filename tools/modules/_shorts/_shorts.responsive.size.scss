@@ -1,0 +1,117 @@
+// * ========================================================================
+//   # TOOLS shorts -> Responsive size
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include responsive-size-ratio($v1, $v2, $v3, $v4, $v5, $r);
+** $r => ratio value must be a number
+** $r => must be a restult of width/height
+** $v1, $v2, $v3, $v4, $v5 => must be a px value
+** $v1, $v2, $v3, $v4, $v5 => !! when are px values its become vw values !!
+** $v1, $v2, $v3, $v4, $v5 => could be: null
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include responsive-size-ratio(100px, 80px, null, 70px, 70px, 1.2);
+** }
+**
+**
+** === IT MEANS ===
+**
+** margin-top for lg (large device) breakpoint = 100px
+** margin-top for md-lg (medium large device) breakpoint = 80px
+** md (medium device) don't have margin-top property 
+** margin-top for md-sm (medium small device) breakpoint = 70px
+** margin-top for sm (small device) breakpoint = 70px
+**
+**
+** === WHEN COMBINED ===
+**
+** styles/custom_settings/_resolutions.scss => you could define which value will be fluid
+**
+*/
+
+
+@mixin responsive-size-ratio($v1, $v2, $v3, $v4, $v5, $ratio) {
+  // Debug => verify input
+  $errorMessageSize: "Responsive size => should be null or px value (your value: #{$v1}, #{$v2}, #{$v3}, #{$v4}, #{$v5})";
+  $errorMessageRatio: "Responsive size => ratio can't be null but must be a number (your value: #{$ratio})";
+
+  @if $ratio == null { @error $errorMessageRatio; }
+
+  @if $v1 {
+    @if unit($v1) != 'px' {  
+      @error $errorMessageSize;
+    }
+  }
+  @if $v2 {
+    @if unit($v2) != 'px' {  
+      @error $errorMessageSize;
+    }
+  }
+  @if $v3 {
+    @if unit($v3) != 'px' {  
+      @error $errorMessageSize;
+    }
+  }
+  @if $v4 {
+    @if unit($v4) != 'px' {  
+      @error $errorMessageSize;
+    }
+  }
+  @if $v5 {
+    @if unit($v5) != 'px' {  
+      @error $errorMessageSize;
+    }
+  }
+
+
+  // Result
+  $r: $ratio;
+  width: 100%;
+
+  @if $v1 {
+    @include bp-lg{ 
+      $w: $v1; $h: $w / $r;
+      @if $lg-fluid == 'true' { width: get-vw-lg($w); height: get-vw-lg($h); }
+      @if $lg-fluid == 'false' { width: $w; min-height: $h; }  
+    }
+  }
+  
+
+  @if $v2 {
+    @include bp-md-lg{ 
+      $w: $v2; $h: $w / $r;
+      @if $md-lg-fluid == 'true' { width: get-vw-md-lg($w); height: get-vw-md-lg($h); }
+      @if $md-lg-fluid == 'false' { width: $w; min-height: $h; } 
+    }
+  }
+
+  @if $v3 {
+    @include bp-md{ 
+      $w: $v3; $h: $w / $r;
+      @if $md-fluid == 'true' { width: get-vw-md($w); height: get-vw-md($h); }
+      @if $md-fluid == 'false' { width: $w; min-height: $h; } 
+    }
+  }
+
+  @if $v4 {
+    @include bp-md-sm{ 
+      $w: $v4; $h: $w / $r;
+      @if $md-sm-fluid == 'true' { width: get-vw-md-sm($w); height: get-vw-md-sm($h); }
+      @if $md-sm-fluid == 'false' { width: $w; min-height: $h; } 
+    }
+  }
+
+  @if $v5 {
+    @include bp-sm{ 
+      $w: $v5; $h: $w / $r;
+      @if $sm-fluid == 'true' { width: get-vw-sm($w); height: get-vw-sm($h); }
+      @if $sm-fluid == 'false' { width: $w; min-height: $h; }   
+    }
+  }
+}

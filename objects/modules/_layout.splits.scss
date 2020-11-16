@@ -1,0 +1,33 @@
+/*
+  OBJECTS => Layout generics elements
+*/
+
+.o-layout--split-float{
+  .o-layout__left{ float: left ;}
+  .o-layout__right{ float: right; }  
+
+  &.blog{//verify with sidebar
+    $w-1: 700px; $w-2: 400px;
+    $w-s-1: 350px; $w-s-2: 200px;
+    $m-h-1: 100px; $m-h-2: 50px; $m-h-3: 20px;
+    @include responsive-prop('padding-top', 70px, 100px, 0px, null, null);  
+
+    @include smartphone{ @include flex-direction(column); }
+
+    > *{
+      @include smartphone{ 
+        padding-left: get-vw-smartphone($m-h-3);
+        padding-right: get-vw-smartphone($m-h-3);
+      }
+    }
+
+    .o-layout__left{ 
+      @include responsive-prop('width', $w-1, $w-2, null, null, null);
+      @include responsive-prop('margin-left', $m-h-1, $m-h-2, null, null, null);
+    }
+    .o-layout__right{ 
+      @include responsive-prop('width', $w-s-1, $w-s-2, null, null, null);
+      @include responsive-prop('margin-right', $m-h-1, $m-h-2, null, null, null);
+    }
+  }
+}

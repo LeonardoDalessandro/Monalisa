@@ -1,0 +1,118 @@
+// * ========================================================================
+//   # TOOLS -> Generator - LOGO
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include logo-generator($logo-name, $w1, $w2, $w3, $w4, $w5);
+** $logo-name => must be a string, 'CocaLoca' || 'Mike'
+** $w1, $w2, $w3, $w4, $w5 => must be a px value
+** $w1, $w2, $w3, $w4, $w5 => !! when are px values its become vw values !!
+** $w1, $w2, $w3, $w4, $w5 => could be: null
+** $w1, $w2, $w3, $w4, $w5 => could be: 'fluid'
+** $w1, $w2, $w3, $w4, $w5 => when = 'fluid' it means 100%
+** $w1, $w2, $w3, $w4, $w5 => 'fluid' must be a string value
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include logo-generator('CocaLoca', 300px, 200px, 100px, 50px, null);
+** }
+**
+**
+** === IT MEANS ===
+**
+** width = 300px for lg desktop
+** width = 200px for lg desktop
+** width = 100px for lg desktop
+** width = 50px for lg desktop
+** width = 10px for lg desktop
+**
+** height = will be calculated and returned automaticaly
+**
+**
+**
+*/
+
+@mixin logo-generator($logo-name, $w1, $w2, $w3, $w4, $w5) {
+  // Debug => verify input
+  $errorMessageSize: "Responsive property => should be null, 'fluid' or px value (your value: #{$v1}, #{$v2}, #{$v3}, #{$v4}, #{$v5})";
+  $errorMessagePropName: "Responsive property => must be string type (your value: #{$prop-name})";
+
+  @if type-of($prop-name) != 'string' { @error $errorMessagePropName; }
+
+  @if unit($v1) != 'px' {  
+    @if $v1 != null and $v1 != 'fluid'{
+      @error $errorMessageSize;
+    }
+  }
+  @if unit($v2) != 'px' {  
+    @if $v2 != null and $v2 != 'fluid'{
+      @error $errorMessageSize;
+    }
+  }
+  @if unit($v3) != 'px' {  
+    @if $v3 != null and $v3 != 'fluid'{
+      @error $errorMessageSize;
+    }
+  }
+  @if unit($v4) != 'px' {  
+    @if $v4 != null and $v4 != 'fluid'{
+      @error $errorMessageSize;
+    }
+  }
+  @if unit($v5) != 'px' {  
+    @if $v5 != null and $v5 != 'fluid'{
+      @error $errorMessageSize;
+    }
+  }
+
+  // Result
+  @if $v1 {
+    @include bp-lg{
+      @if $v1 == 'fluid' { #{$prop-name}: 100%; }
+      @else{
+        @if $lg-fluid == 'true' { #{$prop-name}: get-vw-lg($v1); }
+        @if $lg-fluid == 'false' { #{$prop-name}: $v1; }
+      }            
+    }
+  }  
+  @if $v2 {
+    @include bp-md-lg{
+      @if $v2 == 'fluid' { #{$prop-name}: 100%; }
+      @else {
+        @if $md-lg-fluid == 'true' { #{$prop-name}: get-vw-md-lg($v2); }
+        @if $md-lg-fluid == 'false' { #{$prop-name}: $v2; }
+      }      
+    }
+  }
+  @if $v3 {
+    @include bp-md{
+      @if $v3 == 'fluid' { #{$prop-name}: 100%; }
+      @else{
+        @if $md-fluid == 'true' { #{$prop-name}: get-vw-md($v3); }
+        @if $md-fluid == 'false' { #{$prop-name}: $v3; } 
+      }      
+    }
+  }
+  @if $v4 {
+    @include bp-md-sm{
+      @if $v4 == 'fluid' { #{$prop-name}: 100%; }
+      @else{
+        @if $md-sm-fluid == 'true' { #{$prop-name}: get-vw-md-sm($v4); }
+        @if $md-sm-fluid == 'false' { #{$prop-name}: $v4; } 
+      }      
+    }
+  }
+  @if $v5 {
+    @include bp-sm{
+      @if $v5 == 'fluid' { #{$prop-name}: 100%; }
+      @else{
+        @if $sm-fluid == 'true' { #{$prop-name}: get-vw-sm($v5); }
+        @if $sm-fluid == 'false' { #{$prop-name}: $v5; } 
+      }      
+    }
+  }
+}

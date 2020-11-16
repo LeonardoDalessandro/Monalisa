@@ -1,0 +1,43 @@
+// * ========================================================================
+//   # TOOLS -> Generator - Typography
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include typography-generator($face, $weight, $f1, $f2, $f3, $f4, $f5, $r)
+** $face => must be same setting value in ./settings/modules/_fonts.scss
+** $weight => must be a number
+** $f1, $f2, $f3, $f4, $f5 => must be a px value
+** $f1, $f2, $f3, $f4, $f5 => !! when are px values its become vw values !!
+** $f1, $f2, $f3, $f4, $f5 => could be: null
+** $r => must be a number/float number
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include typography-generator($face-open-sans, 800, 25px, 20px, 25px, null, null, 1.6);
+** }
+**
+**
+**
+**
+**
+*/
+
+
+@mixin typography-generator($face, $weight, $f1, $f2, $f3, $f4, $f5, $r) {
+  //TODO: add debug
+
+  // Result
+  @if $face {
+    @if $face == $font-face-1 { @extend %assign-font-face-1; }
+    @if $face == $face-face-2 { @extend %assign-font-face-2; }
+  }  
+
+  @if $weight { font-weight: $weight; }
+
+  @include responsive-prop('font-size', $f1, $f2, $f3, $f4, $f5);
+  @include responsive-prop('line-height', $f1*$r, $f2*$r, $f3*$r, $f4*$r, $f5*$r);  
+}

@@ -1,0 +1,52 @@
+/*
+  OBJECTS => Grids
+*/
+
+%list-elem{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+%list-disc{ list-style-type: disc; }
+%list-circle{ list-style-type: circle; }
+%list-decimal{ list-style-type: decimal-leading-zero;}
+%list-alpha-lower{ list-style-type: lower-alpha;}
+%list-alpha-upper{ list-style-type: upper-alpha;}
+%list-roman{ list-style-type: upper-roman;}
+
+%list-link-reset{ a{ text-decoration: none; } }
+%list-link-default{ 
+  a{ text-decoration: underline; &:hover{ text-decoration: none; } } 
+}
+
+
+
+/* RENDER & Placeholder */
+.o-list--elem, %list{
+  @include extend-array('list-', 'elem', 'link-reset');
+}
+
+.o-list--text-disc, %list-disc{
+  @include extend-array('list-', 'disc', 'link-default');
+}
+
+.o-list--text-circle, %list-circle{
+  @include extend-array('list-', 'circle', 'link-default');
+}
+
+.o-list--text-decimal, %list-text-decimal{
+  @include extend-array('list-', 'decimal', 'link-default');
+}
+
+.o-list--text-alpha-lower, %list-text-alpha-lower{
+  @include extend-array('list-', 'alpha-lower', 'link-default');
+}
+
+.o-list--text-alpha-upper, %list-text-alpha-upper{
+  @include extend-array('list-', 'alpha-upper', 'link-default');
+}
+
+.o-list--text-roman, %list-text-roman{
+  @include extend-array('list-', 'roman', 'link-default');
+}

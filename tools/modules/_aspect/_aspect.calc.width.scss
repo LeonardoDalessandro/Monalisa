@@ -1,0 +1,31 @@
+// * ========================================================================
+//   # TOOLS aspect -> Return width from given height and size ratio
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include calc-width($height, $ratio);
+** $height => must be: px
+** $ratio => must be: number (NOT STRING)
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include calc-width(50px, 1);
+** }
+**
+*/
+
+
+@mixin calc-width($h,$r){
+  // Debug => verify input
+  $errorMessageSize: "Calc width => Unit property HEIGHT must be 'px': 10px, 20px, ... (your value: #{$h})";
+  $errorMessageRatio: "Calc width => Property RATIO must be a number: 1, 0.1, 1.1, ... (your value: #{$r})";
+  @if unit($h) != 'px' { @error $errorMessageSize; }
+  @if unit($r) != '' { @error $errorMessageRatio; }
+
+  // Return
+  width: $h * $r;
+}

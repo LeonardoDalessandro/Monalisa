@@ -1,0 +1,29 @@
+// * ========================================================================
+//   # TOOLS aspect -> Crossbrowser - Border radius
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include border-radius($corner);
+** $corner => allow all units:  px, em, vw, %
+**
+**
+** === EXAMPLE USE ===
+**
+** .class1{
+**   @include border-radius(25px);
+** }
+**
+** .class2{
+**   @include border-radius(50%);
+** }
+*/
+
+@mixin border-radius($corner){
+  // Return
+  -webkit-border-radius: $corner;
+  -moz-border-radius: $corner;
+  -khtml-border-radius: $corner;
+  border-radius: $corner;
+}

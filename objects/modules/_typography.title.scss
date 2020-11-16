@@ -1,0 +1,14 @@
+/*
+  Component => typography
+*/
+
+// titles sans
+.o-typo__title--sans-1, %title-sans-1{
+  @include typography-generator($face-open-sans, 800, 80px, 50px, 25px, null, null, 1);
+}
+
+
+// titles serif
+.c-typo__title--serif-1, %title-serif-1{
+  @include typography-generator($face-cormorant, 700, 30px, 25px, 15px, null, null, 1);
+}

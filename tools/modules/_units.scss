@@ -1,0 +1,65 @@
+// * ========================================================================
+//   # TOOLS -> Responsive units
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** get-vw-sm($target)
+** $target => must be: px
+**
+** === RETURN ===
+**
+** ###vw
+**
+*/
+
+@function get-vw-sm($target) {
+  // Debug => verify input
+  $errorMessage: "Units - return vw from px => Unit property must be 'px': 10px, 20px, ... (your value: #{$target})";
+  @if unit($target) != 'px' { @warn $errorMessage; }
+  
+  // Return
+  $vw-context: $bp-sm * 0.01;
+  @return ($target / $vw-context) * 1vw;
+}
+
+@function get-vw-md-sm($target) {
+  // Debug => verify input
+  $errorMessage: "Units - return vw from px => Unit property must be 'px': 10px, 20px, ... (your value: #{$target})";
+  @if unit($target) != 'px' { @warn $errorMessage; }
+  
+  // Return
+  $vw-context: $bp-sm * 0.01;
+  @return ($target / $vw-context) * 1vw;
+}
+
+@function get-vw-md($target) {
+  // Debug => verify input
+  $errorMessage: "Units - return vw from px => Unit property must be 'px': 10px, 20px, ... (your value: #{$target})";
+  @if unit($target) != 'px' { @warn $errorMessage; }
+  
+  // Return
+  $vw-context: $bp-md-sm * 0.01;
+  @return ($target / $vw-context) * 1vw;
+}
+
+@function get-vw-md-lg($target) {
+  // Debug => verify input
+  $errorMessage: "Units - return vw from px => Unit property must be 'px': 10px, 20px, ... (your value: #{$target})";
+  @if unit($target) != 'px' { @warn $errorMessage; }
+  
+  // Return
+  $vw-context: $bp-md-lg * 0.01;
+  @return ($target / $vw-context) * 1vw;
+}
+
+@function get-vw-lg($target) {
+  // Debug => verify input
+  $errorMessage: "Units - return vw from px => Unit property must be 'px': 10px, 20px, ... (your value: #{$target})";
+  @if unit($target) != 'px' { @warn $errorMessage; }
+  
+  // Return
+  $vw-context: $bp-lg * 0.01;
+  @return ($target / $vw-context) * 1vw;
+}

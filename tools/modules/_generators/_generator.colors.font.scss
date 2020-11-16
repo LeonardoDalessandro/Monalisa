@@ -1,0 +1,34 @@
+// * ========================================================================
+//   # TOOLS -> Generator - COLORS
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include color-font-generator($val);
+** $val => must be a color hex
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include color-font-generator(#f00);
+** }
+**
+**
+**
+**
+*/
+
+@mixin color-font-generator($val){
+	// Define var
+  $colorType: $val;
+
+  // Debug => verify input
+  $errorMessageColor: "$colorType must be a color value (your value: #{$colorType})";
+  @if type-of($colorType) != 'color' { @error $errorMessageColor; }
+  
+  // Return
+  color: $colorType;
+  a{ color: $colorType; }
+}

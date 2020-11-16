@@ -1,0 +1,38 @@
+// * ========================================================================
+//   # UTILS -> Text
+//   ======================================================================== */
+
+/*
+** === PLACEHOLDER FOR SCSS ONLY ===
+*/
+
+// Align
+%text-left, .u-text--left{
+  text-align: left !important;
+}
+%text-center, .u-text--center{
+  text-align: center !important;
+}
+%text-justify, .u-text--justify{
+  text-align: justify !important;
+}
+%text-right, .u-text--right{
+  text-align: right !important;
+}
+
+// Style
+%text-uppercase, .u-text--uppercase{
+  text-transform: uppercase !important;
+}
+%text-regular, .u-text--regular{
+  font-weight: 400 !important;
+}
+%text-medium, .u-text--medium{
+  font-weight: 500 !important;
+}
+%text-bold, .u-text--bold{
+  font-weight: 700 !important;
+}
+%text-italic, .u-text--italic{
+  font-style: italic !important;
+}

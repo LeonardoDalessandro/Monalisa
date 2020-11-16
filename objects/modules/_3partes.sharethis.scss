@@ -1,0 +1,16 @@
+/*
+  Object => Share this custom theme https://www.sharethis.com/support/customization/how-to-set-custom-buttons/
+*/
+
+// blur effect
+@media (min-width: 601px) { 
+  .st-btn{
+    $c: $color-brand-1;
+    background-color: #fff !important;
+    border-top: 1px solid $c;
+    border-right: 1px solid $c;
+
+    &.st-last{ border-bottom: 1px solid $c; }
+
+  }
+}

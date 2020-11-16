@@ -1,0 +1,81 @@
+// * ========================================================================
+//   # UTILS -> Colors helper
+//   ======================================================================== */
+
+/*
+** === FONT COLOR ===
+*/
+%font-brand-1, .u-f--primary-1{
+  @include color-font-generator($color-brand-1);
+}
+%font-brand-2, .u-f--primary-2{
+  @include color-font-generator($color-brand-2);
+}
+%font-brand-3, .u-f--primary-3{
+  @include color-font-generator($color-brand-3);
+}
+%font-white, .u-f--white{
+  @include color-font-generator(#fff);
+}
+%font-gray-lt, .u-f--gray-lt{
+  @include color-font-generator($color-gray-lt);
+}
+%font-gray-md, .u-f--gray-md{
+  @include color-font-generator($color-gray-md);
+}
+%font-gray-dk, .u-f--gray-dk{
+  @include color-font-generator($color-gray-dk);
+}
+%font-success, .u-f--success{
+  @include color-font-generator($color-status-valid);
+}
+%font-error, .u-f--error{
+  @include color-font-generator($color-status-error);
+}
+%font-hidden, .u-f--hidden{
+  @include color-font-generator($color-status-hidden);
+}
+
+/*
+** === Background COLOR ===
+*/
+%bg-primary, .u-bg--fill-primary{
+  @include color-box-fill-generator($color-brand-1, #fff, 'false');
+}
+%bg-gray-lt, .u-bg--fill-gray-lt{
+  @include color-box-fill-generator($color-gray-lt, $color-gray-md, 'false');
+}
+
+//STATUS
+// status primary
+%gradient-primary, .u-br--gradient-primary {
+  @include gradientgenerator-2colors($status-primary, $status-primary-2);
+}
+%gradient-error, .u-br--gradient-error {
+  @include gradientgenerator-2colors($status-error, $status-error-2);
+}
+%gradient-alert, .u-br--gradient-alert {
+  @include gradientgenerator-2colors($status-alert, $status-alert-2);
+}
+%gradient-valid, .u-br--gradient-valid {
+  @include gradientgenerator-2colors($status-valid, $status-valid-2);
+}
+%gradient-hidden, .u-br--gradient-hidden {
+  @include gradientgenerator-2colors($status-hidden, $status-hidden-2);
+}
+
+/*
+** === Button COLOR ===
+*/
+%btn-brand-fill-1, .u-btn--fill-primary-1{
+  @include color-box-fill-generator($color-brand-1, #fff, 'true');
+}
+%btn-brand-fill-2, .u-btn--fill-primary-2{
+  @include color-box-fill-generator($color-brand-2, #fff, 'true');
+}
+%btn-brand-stroke-1, .u-btn--stroke-primary-2{
+  @include color-box-stroke-generator($color-brand-2, 'true');
+}
+%btn-brand-stroke-2, .u-btn--stroke-primary-3{
+  @include color-box-stroke-generator($color-brand-3, 'true');
+}

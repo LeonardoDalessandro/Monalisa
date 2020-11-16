@@ -1,0 +1,32 @@
+// * ========================================================================
+//   # TOOLS shorts -> Spacing position
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include position($pos, $top, $right, $bottom, $left);
+** $pos => must be a string and a real css property ('relative' or 'absolute')
+** $top, $right, $bottom, $left => could be all allow value
+**
+**
+** === EXAMPLE USE ===
+**
+** .class{
+**   @include position('absolute', 50%, null, null, 50%);
+** }
+**
+*/
+
+@mixin position($pos, $top, $right, $bottom, $left) {
+  // Debug => verify input
+  $errorMessage: "Position => value must be 'relative' or 'absolute' (your value: #{pos})";
+  @if $pos != relative and $pos != absolute { @error $errorMessage; }
+
+  // Result
+  position: $pos;
+  @if $top != null { top: $top }
+  @if $right != null { right: $right }
+  @if $bottom != null { bottom: $bottom }
+  @if $left != null { left: $left }
+}

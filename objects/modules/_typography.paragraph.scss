@@ -1,0 +1,15 @@
+/*
+  Component => typography
+*/
+
+
+// paragraph sans
+.o-typo__paragraph--sans-1, %paragraph-sans-1{
+  @include typography-generator($face-open-sans, 800, 25px, 20px, 25px, null, null, 1.6);
+}
+
+
+// paragraph serif
+.c-typo__paragraph--serif-1, paragraphe-serif-1{
+  @include typography-generator($face-cormorant, 700, 25px, 25px, 15px, null, null, 1.6);
+}

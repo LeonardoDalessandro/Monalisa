@@ -1,0 +1,23 @@
+// * ========================================================================
+//   # TOOLS -> Responsive
+//   ======================================================================== */
+
+/*
+** === USAGE ===
+**
+** @include bp-sm { color: #f00: ... }
+** @include bp-lg { color: #0f0: ... }
+**
+*/
+
+// media queries
+@mixin bp-sm { @media (max-width: $bp-sm - 1px) { @content; } }
+@mixin bp-md-sm { @media (min-width: $bp-sm) and (max-width: $bp-md-sm - 1px) { @content; } }
+@mixin bp-md { @media (min-width: $bp-md-sm) and (max-width: $bp-md-lg - 1px) { @content; } }
+@mixin bp-md-lg { @media (min-width: $bp-md-lg) and (max-width: $bp-lg - 1px) { @content; } }
+@mixin bp-lg { @media (min-width: $bp-lg) { @content; } }
+
+@mixin portrait { @media screen and (orientation: portrait) { @content; } }
+@mixin landscape { @media screen and (orientation: landscape) { @content; } }
+
+@mixin smartphone{ @media (max-width: $bp-md-sm - 1px) { @content; } }

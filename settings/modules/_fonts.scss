@@ -1,0 +1,16 @@
+///* ========================================================================
+//   #FONTS
+//   ======================================================================== */
+
+// Set font family placeholder
+$face-open-sans: 'Open Sans';
+$face-cormorant: 'Cormorant Garamond';
+
+%open-sans{font-family: $face-open-sans, sans-serif;}
+%cormorant-garamond{font-family: $face-cormorant, sans-serif;}
+
+// !! CAUTION TO EDIT !!
+$font-face-1: $face-open-sans;
+$font-face-2: $face-cormorant;
+%assign-font-face-1{ @extend %open-sans; }
+%assign-font-face-2{ @extend %cormorant-garamond; }
