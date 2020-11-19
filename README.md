@@ -34,6 +34,18 @@ Custom scss framework based on ITCSS and BEM
 ## About The Project
 
 Custom scss framework based on ITCSS and BEM
+What is ITCSS? Read this great article: [https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
+What is BEM? See project page: [http://getbem.com/introduction/](http://getbem.com/introduction/)
+
+Easy to understand and integrate on your project.
+Fully customizable and highly scalable.
+
+Tested on real life projects.
+
+Try it with the methodology: [pseudo TDD](https://github.com/LeonardoDalessandro/Monalisa/wiki/Pseudo-TDD)
+
+See the [DOC](https://github.com/LeonardoDalessandro/Monalisa/wiki)
+
 
 ### Built With
 * CSS extention [Sass](https://sass-lang.com)
