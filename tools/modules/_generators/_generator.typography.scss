@@ -39,5 +39,21 @@
   @if $weight { font-weight: $weight; }
 
   @include responsive-prop('font-size', $f1, $f2, $f3, $f4, $f5);
-  @include responsive-prop('line-height', $f1*$r, $f2*$r, $f3*$r, $f4*$r, $f5*$r);  
+
+  
+  @if $f1 {
+    @include responsive-prop('line-height', $f1*$r, null, null, null, null);
+  }  
+  @if $f2 {
+    @include responsive-prop('line-height', null, $f2*$r, null, null, null);  
+  }  
+  @if $f3 {
+    @include responsive-prop('line-height', null, null, $f3*$r, null, null);  
+  }  
+  @if $f4 {
+    @include responsive-prop('line-height', null, null, null, $f4*$r, null);  
+  }  
+  @if $f5 {
+    @include responsive-prop('line-height', null, null, null, null, $f5*$r);  
+  } 
 }
