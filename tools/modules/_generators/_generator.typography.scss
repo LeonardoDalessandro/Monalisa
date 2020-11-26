@@ -33,7 +33,7 @@
   // Result
   @if $face {
     @if $face == $font-face-1 { @extend %assign-font-face-1; }
-    @if $face == $face-face-2 { @extend %assign-font-face-2; }
+    @if $face == $font-face-2 { @extend %assign-font-face-2; }
   }  
 
   @if $weight { font-weight: $weight; }
