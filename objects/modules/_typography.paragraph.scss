@@ -10,6 +10,6 @@
 
 
 // paragraph serif
-.c-typo__paragraph--serif-1, paragraphe-serif-1{
+.c-typo__paragraph--serif-1, %paragraphe-serif-1{
   @include typography-generator($face-cormorant, 700, 25px, 25px, 15px, null, null, 1.6);
 }
